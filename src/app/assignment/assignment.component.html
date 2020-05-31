@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Project Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          >
+        </div>
+        <div *ngIf="form.get('name').invalid && form.get('name').touched">
+          <span *ngIf="form.get('name').errors['nameIsForbidden']==true"
+                class="help-block">Invalid name</span>
+          <span *ngIf="form.get('name').errors['required']==true"
+                class="help-block">Name is required</span>
+        </div>
+
+
+        <div class="form-group">
+          <label for="mail">Mail</label>
+          <input
+            type="text"
+            name="mail"
+            id="mail"
+            class="form-control"
+            formControlName="mail"
+          >
+          <div *ngIf="form.get('mail').invalid && form.get('mail').touched">
+            <span *ngIf="form.get('mail').errors['email']==true"
+                class="help-block">Invalid name</span>
+            <span *ngIf="form.get('mail').errors['required']==true"
+                  class="help-block">Mail is required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="status"></label>
+          <select name="status"
+                  formControlName="status"
+                  class="form-control"
+                  id="status">
+            <option value="stable">Stable</option>
+            <option value="critical">Critical</option>
+            <option value="finished">Finished</option>
+          </select>
+        </div>
+
+        <button class="btn btn-default">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>
